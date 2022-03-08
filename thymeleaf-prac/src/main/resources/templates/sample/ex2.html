@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .target {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+<ul>
+  --------------------state.index----------------------
+  <li th:each="dto, state : ${list}" th:if="${dto.sno % 5 ==0}">
+    [[${state.index}]] --- [[${dto}]]
+  </li>
+  --------------------if----------------------
+  <li th:each="dto, state : ${list}" th:if="${dto.sno % 5 ==0}">
+    [[${state.count}]] --- [[${dto}]]
+  </li>
+  <li th:each="dto, state: ${list}">
+    <span th:if="${dto.sno%5==0}" th:text="'-----------------'+${dto.sno}"></span>
+    <span th:unless="${dto.sno%5==0}" th:text="${dto.first}"></span>
+  </li>
+  --------------------? operator----------------------
+  <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 ==0}? ${dto.sno}">
+  </li>
+  <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 ==0}? ${dto.sno}: ${dto.first}">
+  </li>
+  <li th:each="dto, state : ${list}" th:class="${dto.sno%5==0} ? 'target'" th:text="${dto}">
+  </li>
+  -----------------th:block--------------------------
+  <th:block th:each="dto: ${list}">
+    <li th:text="${dto.sno % 5==0}?${dto.sno}:${dto.first}"></li>
+  </th:block>
+</ul>
+</body>
+</html>
