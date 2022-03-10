@@ -1,0 +1,21 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h3>Result</h3>
+	
+	<table border="1">
+		<tr>
+			<td>유저ID</td>
+			<td th:text="${member.userId}">${member.userId}</td>
+		</tr>
+		<tr>
+			<td>이름</td>
+			<td th:text="${member.userName}">${member.userName}</td>
+		</tr>
+	</table>
+</body>
+</html>

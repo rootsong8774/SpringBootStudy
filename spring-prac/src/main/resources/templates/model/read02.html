@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <h3>Result</h3>
+  <div th:text="'member.userId : ' + ${member.userId}">userId : ${member.userId}</div>
+  <div th:text="'member.password : ' + ${member.password}">password : ${member.password}</div>
+  <div th:text="'member.email : ' + ${member.email}">email : ${member.email}</div>
+  <div th:text="'member.userName : ' + ${member.userName}">userName : ${member.userName}</div>
+
+</body>
+</html>

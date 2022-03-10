@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<h3>Result</h3>
+	
+	<div th:text="'user.address.postCode : ' + ${user.address.postCode}">user.userId : ${user.userId}</div>
+	<div th:text="'user.password : ' + ${user.password}">user.password : ${user.password}</div>
+	
+	<div th:text="'user.userName : ' + ${user.userName}">user.userName : ${user.userName}</div>
+	<div th:text="'user.email : ' + ${user.email}">user.email : ${user.email}</div>
+	<div th:text="'user.gender : ' + ${user.gender}">user.gender : ${user.gender}</div>
+	<div th:text="'user.hobby : ' + ${user.hobby}">user.hobby : ${user.hobby}</div>
+	
+	<div th:each="hobby : ${user.hobbyArray}" th:text="${hobby}"></div>
+	
+	<div th:each="hobby : ${user.hobbyList}" th:text="${hobby}"></div>
+	
+	<div th:text="'user.foreigner : ' + ${user.foreigner}">user.foreigner : ${user.foreigner}</div>
+	<div th:text="'user.developer : ' + ${user.developer}">user.developer : ${user.developer}</div>
+	<div th:text="'user.nationality : ' + ${user.nationality}">user.nationality : ${user.nationality}</div>
+	
+	<div th:text="'user.address.postCode : ' + ${user.address.postCode}">user.address.postCode : ${user.address.postCode}</div>
+	<div th:text="'user.address.location : ' + ${user.address.location}">user.address.location : ${user.address.location}</div>
+	
+	<div th:each="card : ${user.cardList}" th:text="${card.no} + ' ' + ${card.validMonth}"></div>
+	
+	<div th:each="card : ${user.cardList}">
+		<span th:text="${card.no}"></span> <span th:text="${card.validMonth}"></span>
+	</div>
+	
+	<div th:each="card : ${user.cardList}">
+		<span th:text="${card.no} + ' ' + ${card.validMonth}"></span>
+	</div>
+	
+	<div th:text="'user.cars : ' + ${user.cars}">user.cars : ${user.cars}</div>
+	
+	<div th:each="car : ${user.carArray}" th:text="${car}"></div>
+	
+	<div th:each="car : ${user.carList}" th:text="${car}"></div>
+	
+	<div th:text="'user.introduction : ' + ${user.introduction}">user.introduction : ${user.introduction}</div>
+	
+	<div th:text="'user.dateOfBirth : ' + ${user.dateOfBirth}">user.dateOfBirth : ${user.dateOfBirth}</div>
+</body>
+</html>

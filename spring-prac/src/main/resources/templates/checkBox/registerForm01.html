@@ -1,0 +1,25 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>Spring Form</h2>
+	<form action="result.html" th:action="@{/register}" th:object="${member}" method="POST">
+		<table>
+			<tr>
+				<td>취미(hobbyList) : </td>
+				<td>
+					<th:block th:each="element : ${hobbyMap}">
+						<input type="checkbox" th:field="*{hobbyList}" th:value="${element.key}" />
+						<label th:for="${#ids.prev('hobbyList')}" th:text="${element.value}">Sports</label>
+					</th:block>
+				</td>
+			</tr>
+		</table>
+			
+        <button name="register" type="submit">등록</button>
+    </form>	
+</body>
+</html>

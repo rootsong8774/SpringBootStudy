@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<h3>Result</h3>
+	
+	<h4>hobbyArray : </h4>
+	<div th:each="hobby : ${hobbyArray}" th:text="${hobby}"></div>
+	
+	<h4>hobbyList : </h4>
+	<div th:each="hobby : ${hobbyList}" th:text="${hobby}"></div>
+	
+	<h4>carArray : </h4>
+	<div th:each="car : ${carArray}" th:text="${car}"></div>
+	
+	<h4>carList : </h4>
+	<div th:each="car : ${carList}" th:text="${car}"></div>
+	
+</body>
+</html>

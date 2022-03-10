@@ -1,0 +1,22 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h3>Result</h3>
+
+	<table>
+		<tr>
+			<td>취미(hobbyList) : </td>
+			<td>
+				<th:block th:each="hobby : ${hobbyList}">
+					<span th:text="${hobby}">hobby</span>
+					<br />
+				</th:block>
+			</td>
+		</tr>
+	</table>	
+</body>
+</html>

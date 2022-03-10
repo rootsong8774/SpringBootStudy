@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>Spring Form</h2>
+	<form action="result.html" th:action="@{/register}" th:object="${member}" method="POST">
+		<table>
+			<tr>
+				<td>유저ID</td>
+				<td><input type="text" name="text" th:field="*{userId}" /><span th:if="${#fields.hasErrors('userId')}" th:errors="*{userId}" style="color: red; ">userId의 에러 메시지</span></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="text" th:field="*{userName}" /><span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}" style="color: red; ">userName의 에러 메시지</span></td>
+			</tr>
+		</table>	
+		
+        <button type="submit">등록</button>
+    </form>	
+</body>
+</html>

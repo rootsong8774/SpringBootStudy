@@ -1,0 +1,24 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<h3>Result</h3>
+	
+	<h4>user.address : </h4>
+	<div th:text="'user.address.postCode : ' + ${user.address.postCode}"></div>
+	<div th:text="'user.address.location : ' + ${user.address.location}"></div>
+	
+	<h4>user.cardList : </h4>
+	<div th:each="card : ${user.cardList}" th:text="${card.no} + ' ' + ${card.validMonth}"></div>
+	
+	<div th:each="card : ${user.cardList}">
+		<span th:text="${card.no}"></span> <span th:text="${card.validMonth}"></span>
+	</div>
+	
+	<div th:each="card : ${user.cardList}">
+		<span th:text="${card.no} + ' ' + ${card.validMonth}"></span>
+	</div>
+</body>
+</html>

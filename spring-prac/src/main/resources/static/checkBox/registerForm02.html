@@ -1,0 +1,31 @@
+<html>
+
+<head>
+	<title>Home</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h2>Spring Form</h2>
+	<form action="/register" method="POST">
+		<table>
+			<tr>
+				<td>취미(hobbyList) : </td>
+				<td>
+					
+						<input type="checkbox" value="01" id="hobbyList1" name="hobbyList" /><input type="hidden" name="_hobbyList" value="on"/>
+						<label for="hobbyList1">Sports</label>
+					
+						<input type="checkbox" value="02" id="hobbyList2" name="hobbyList" /><input type="hidden" name="_hobbyList" value="on"/>
+						<label for="hobbyList2">Music</label>
+					
+						<input type="checkbox" value="03" id="hobbyList3" name="hobbyList" /><input type="hidden" name="_hobbyList" value="on"/>
+						<label for="hobbyList3">Movie</label>
+					
+				</td>
+			</tr>
+		</table>
+			
+        <button name="register" type="submit">등록</button>
+    </form>	
+</body>
+</html>
