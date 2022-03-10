@@ -1,6 +1,8 @@
 package com.example.springCheckBox.controller;
 
+import com.example.springCheckBox.domain.CodeLabelValue;
 import com.example.springCheckBox.domain.Member;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,6 +30,22 @@ public class MemberController {
         model.addAttribute("member", new Member());
 
         return "checkBox/registerForm01";
+    }
+
+    @RequestMapping(value = "/registerForm02", method = RequestMethod.GET)
+    public String registerForm02(Model model) {
+        logger.info("registerForm02");
+
+        List<CodeLabelValue> hobbyCodeList = new ArrayList<>();
+        hobbyCodeList.add(new CodeLabelValue("01", "Sports"));
+        hobbyCodeList.add(new CodeLabelValue("02", "Music"));
+        hobbyCodeList.add(new CodeLabelValue("03", "Movie"));
+
+        model.addAttribute("hobbyCodeList", hobbyCodeList);
+
+        model.addAttribute("member", new Member());
+
+        return "checkBox/registerForm02";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
