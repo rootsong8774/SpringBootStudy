@@ -75,6 +75,7 @@ public class MemberController {
         return "/form/registerForm2";
     }
 
+
     @RequestMapping(value = "/registerForm09", method = RequestMethod.GET)
     public String registerForm09(Model model) {
         logger.info("registerForm09");
