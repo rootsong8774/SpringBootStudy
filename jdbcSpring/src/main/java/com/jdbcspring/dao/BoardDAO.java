@@ -10,8 +10,13 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BoardDAO {
 
-    @Autowired
+
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    public BoardDAO(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public void create(Board board) {
         String query = "INSERT INTO board VALUES (board_seq.nextval, ?, ?, ?, SYSTIMESTAMP)";

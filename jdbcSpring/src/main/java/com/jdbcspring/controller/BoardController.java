@@ -17,8 +17,12 @@ public class BoardController {
 
     private static final Logger logger = LoggerFactory.getLogger("BoardController.class");
 
-    @Autowired
     private BoardService boardService;
+
+    @Autowired
+    public BoardController(BoardService boardService) {
+        this.boardService = boardService;
+    }
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public void registerForm(Board board, Model model) {

@@ -9,8 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class BoardServiceImpl implements BoardService{
 
-    @Autowired
+
     private BoardDAO boardDAO;
+
+    @Autowired
+    public BoardServiceImpl(BoardDAO boardDAO) {
+        this.boardDAO = boardDAO;
+    }
 
     @Override
     public void register(Board board) {
