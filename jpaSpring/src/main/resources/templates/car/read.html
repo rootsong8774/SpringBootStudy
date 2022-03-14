@@ -1,0 +1,72 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Car</title>
+</head>
+
+<script src="/js/jQuery-2.1.4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		let formObj = $("#car");
+
+		console.log(formObj);
+
+		$("#btnModify").on("click", function() {
+			let id = $("#id");
+			let idVal = id.val();
+			
+			self.location = "/car/modify?id=" + idVal;
+		});
+
+		$("#btnRemove").on("click", function() {
+			formObj.attr("action", "/car/remove");
+			formObj.submit();
+		});
+
+		$("#btnList").on("click", function() {
+			self.location = "/car/list";
+		});
+
+	});
+</script>
+
+<body>
+	<h2>READ</h2>
+	
+	<form id="car" th:object="${car}" method="POST">
+		<input type="hidden" name="id" th:field="*{id}" />
+	
+		<table>
+			<tr>
+				<td>Model</td>
+				<td><input type="text" name="model" th:field="*{model}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><textarea name="descr" th:field="*{descr}" readonly="readonly"></textarea></td>
+			</tr>
+			<tr>
+				<td>Mpg</td>
+				<td><input type="text" name="mpg" th:field="*{mpg}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>HorsePower</td>
+				<td><input type="text" name="horsePower" th:field="*{horsePower}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>Year</td>
+				<td><input type="text" name="year" th:field="*{year}" readonly="readonly" /></td>
+			</tr>
+
+		</table>	
+	</form>	
+	
+	<div>
+		<button type="submit" id="btnModify">Modify</button>
+		<button type="submit" id="btnRemove">Remove</button>
+		<button type="submit" id="btnList">List</button>
+	</div>
+</body>
+</html>

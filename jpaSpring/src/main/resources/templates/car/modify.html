@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Car</title>
+</head>
+
+<script src="/js/jQuery-2.1.4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		var formObj = $("#car");
+
+		$("#btnModify").on("click", function() {
+			formObj.attr("action", "/car/modify");
+			formObj.attr("method", "post");
+			formObj.submit();
+		});
+
+		$("#btnList").on("click", function() {
+			self.location = "/car/list";
+		});
+
+	});
+</script>
+
+<body>
+	<h2>MODIFY</h2>
+	
+	<form id="car" action="success.html" th:action="@{modify}" th:object="${car}" method="POST">
+		<input type="hidden" name="id" th:field="*{id}" />
+		
+		<table>
+			<tr>
+				<td>Model</td>
+				<td><input type="text" name="model" th:field="*{model}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('model')}" th:errors="*{model}">error message for model</span></font></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><textarea name="descr" th:field="*{descr}"></textarea></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('descr')}" th:errors="*{descr}">error message for descr</span></font></td>
+			</tr>
+			<tr>
+				<td>Mpg</td>
+				<td><input type="text" name="mpg" th:field="*{mpg}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('mpg')}" th:errors="*{mpg}">error message for mpg</span></font></td>
+			</tr>
+			<tr>
+				<td>HorsePower</td>
+				<td><input type="text" name="horsePower" th:field="*{horsePower}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('horsePower')}" th:errors="*{horsePower}">error message for horsePower</span></font></td>
+			</tr>
+			<tr>
+				<td>Year</td>
+				<td><input type="text" name="year" th:field="*{year}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('year')}" th:errors="*{year}">error message for year</span></font></td>
+			</tr>
+		</table>
+
+	</form>	
+	
+	<div>
+		<button type="submit" id="btnModify">Modify</button>
+		<button type="submit" id="btnList">List</button>
+	</div>
+</body>
+</html>

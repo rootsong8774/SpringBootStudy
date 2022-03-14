@@ -1,0 +1,60 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Car</title>
+</head>
+
+<script src="/js/jQuery-2.1.4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		var formObj = $("#car");
+
+		$("#btnRegister").on("click", function() {
+			formObj.attr("action", "/car/register");
+			formObj.attr("method", "post");
+			formObj.submit();
+		});
+
+		$("#btnList").on("click", function() {
+			self.location = "/car/list";
+		});
+
+	});
+</script>
+
+<body>
+	<h2>REGISTER</h2>
+	
+	<form id="car" action="success.html" th:action="@{/register}" th:object="${car}" method="POST">
+		<table>
+			<tr>
+				<td>Model</td>
+				<td><input type="text" name="model" th:field="*{model}" /></td>
+			</tr>
+			<tr>
+				<td>Description</td>
+				<td><textarea name="descr" th:field="*{descr}"></textarea></td>
+			</tr>
+			<tr>
+				<td>Mpg</td>
+				<td><input type="text" name="mpg" th:field="*{mpg}" /></td>
+			</tr>
+			<tr>
+				<td>HorsePower</td>
+				<td><input type="text" name="horsePower" th:field="*{horsePower}" /></td>
+			</tr>
+			<tr>
+				<td>Year</td>
+				<td><input type="text" name="year" th:field="*{year}" /></td>
+			</tr>
+		</table>	
+	</form>
+	
+	<div>
+		<button type="submit" id="btnRegister">Register</button>
+		<button type="submit" id="btnList">List</button>
+	</div>
+</body>
+</html>

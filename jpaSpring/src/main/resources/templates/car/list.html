@@ -1,0 +1,36 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Car</title>
+</head>
+<body>
+	<h2>List</h2>
+	<a href="register.html" th:href="@{register}">New</a>
+	<table border="1">
+		<tr>
+			<th text-align="center" width="80">ID</th>
+			<th text-align="center" width="150">MODEL</th>
+			<th text-align="center" width="200">DESCRIPTION</th>
+			<th text-align="center" width="100">MPG</th>
+			<th text-align="center" width="100">HORSEPOWER</th>
+			<th text-align="center" width="100">YEAR</th>
+		</tr>
+		
+		<tr th:if="${#lists.isEmpty(list)}">
+			<td colspan="6">
+				List is empty.
+			</td>
+		</tr>
+		
+		<tr th:each="car : ${list}">
+			<td text-align="center" th:text="${car.id}">${car.id}</td>
+			<td text-align="center"><a href="read.html" th:href="@{|read?id=${car.id}|}" th:text="${car.model}">${car.model}</a></td>
+			<td text-align="left" th:text="${car.descr}">${car.descr}</td>
+			<td text-align="center" th:text="${car.mpg}">${car.mpg}</td>
+			<td text-align="center" th:text="${car.horsePower}">${car.horsePower}</td>
+			<td text-align="center" th:text="${car.year}">${car.year}</td>
+
+		</tr>
+	</table>
+</body>
+</html>
