@@ -32,7 +32,7 @@ public class AllBeanTest {
         assertThat(rateDiscountPrice).isEqualTo(2000);
     }
 
-    @Component
+
     static class DiscountService {
         private final Map<String, DiscountPolicy> policyMap;
         private final List<DiscountPolicy> policies;
