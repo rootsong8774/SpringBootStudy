@@ -1,6 +1,8 @@
 package com.jdbcspring.dao;
 
 import com.jdbcspring.domain.Board;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -41,13 +43,14 @@ public class BoardDAO {
         jdbcTemplate.update(query, boardNo);
     }
 
-    public List<Board> list() {
+    /*public List<Board> list() {
         List<Board> results = jdbcTemplate.query(
             "SELECT board_no, title, content, writer, reg_date FROM board where board_no>0 ORDER BY board_no desc, reg_date desc",
             getBoardRowMapper()
         );
         return results;
-    }
+    }*/
+
 
     private RowMapper<Board> getBoardRowMapper() {
         return (rs, rowNum) -> {
