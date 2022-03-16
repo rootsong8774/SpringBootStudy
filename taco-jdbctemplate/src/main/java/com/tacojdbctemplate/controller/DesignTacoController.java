@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/design")
-@SessionAttributes("tacoOrder")
 public class DesignTacoController {
 
     private final IngredientRepository ingredientRepository;
