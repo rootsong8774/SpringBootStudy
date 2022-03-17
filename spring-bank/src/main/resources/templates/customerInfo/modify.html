@@ -1,0 +1,78 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+				content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Bank Customer</title>
+</head>
+
+<script src="/js/jQuery-2.1.4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		let formObj = $("#bankCustomer");
+
+		$("#btnModify").on("click", function() {
+			formObj.attr("action", "/customerInfo/modify");
+			formObj.attr("method", "post");
+			formObj.submit();
+		});
+
+		$("#btnList").on("click", function() {
+			self.location = "/customerInfo/list";
+		});
+
+	});
+</script>
+
+<body>
+	<h2>고객 정보 수정</h2>
+	
+	<form id="bankCustomer" action="success.html" th:action="@{modify}" th:object="${bankCustomer}" method="POST">
+		<input type="hidden" name="customerId" th:field="*{customerId}" />
+		
+		<table>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name" th:field="*{name}" readonly="readonly"/></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">error message for name</span></font></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td><textarea name="address" th:field="*{address}"></textarea></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('address')}" th:errors="*{address}">error message for address</span></font></td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td><input type="text" name="birth" th:field="*{birth}" readonly="readonly"/></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('birth')}" th:errors="*{birth}">error message for birth</span></font></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" name="email" th:field="*{email}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error message for horsePower</span></font></td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td><input type="text" name="phoneNum" th:field="*{phoneNum}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('phoneNum')}" th:errors="*{phoneNum}">error message for phoneNum</span></font></td>
+			</tr>
+			<tr>
+				<td>직업</td>
+				<td><input type="text" name="job" th:field="*{job}" /></td>
+				<td><font color="red"><span th:if="${#fields.hasErrors('job')}" th:errors="*{job}">error message for job</span></font></td>
+			</tr>
+		</table>
+
+	</form>	
+	
+	<div>
+		<button type="submit" id="btnModify">Modify</button>
+		<button type="submit" id="btnList">List</button>
+	</div>
+</body>
+</html>

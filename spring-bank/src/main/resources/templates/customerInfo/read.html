@@ -1,0 +1,76 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>Bank Customer</title>
+</head>
+
+<script src="/js/jQuery-2.1.4.min.js"></script>
+
+<script>
+	$(document).ready(function() {
+
+		let formObj = $("#bankCustomer");
+
+		console.log(formObj);
+
+		$("#btnModify").on("click", function() {
+			let id = $("#customerId");
+			let idVal = id.val();
+			console.log(idVal);
+			self.location = "/customerInfo/modify?customerId=" + idVal;
+		});
+
+		$("#btnRemove").on("click", function() {
+			formObj.attr("action", "/customerInfo/remove");
+			formObj.submit();
+		});
+
+		$("#btnList").on("click", function() {
+			self.location = "/customerInfo/list";
+		});
+
+	});
+</script>
+
+<body>
+	<h2>고객 정보</h2>
+
+	<form id="bankCustomer" th:object="${bankCustomer}" method="POST">
+		<input type="hidden" name="customerId" th:field="*{customerId}" />
+
+		<table>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="name" th:field="*{name}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td><textarea name="address" th:field="*{address}" readonly="readonly"></textarea></td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td><input type="text" name="birth" th:field="*{birth}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td><input type="text" name="email" th:field="*{email}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>전화번호</td>
+				<td><input type="text" name="phoneNum" th:field="*{phoneNum}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<td>직업</td>
+				<td><input type="text" name="job" th:field="*{job}" readonly="readonly" /></td>
+			</tr>
+
+		</table>
+	</form>
+
+	<div>
+		<button type="submit" id="btnModify">Modify</button>
+		<button type="submit" id="btnRemove">Remove</button>
+		<button type="submit" id="btnList">List</button>
+	</div>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Bank Customer</title>
+</head>
+<body>
+<h2>고객 목록</h2>
+<a href="register.html" th:href="@{register}">신규</a>
+<table border="1">
+  <tr>
+    <th text-align="center" width="80">목록번호</th>
+    <th text-align="center" width="120">성명</th>
+    <th text-align="center" width="120">생년월일</th>
+    <th text-align="center" width="160">이메일</th>
+  </tr>
+
+  <tr th:if="${#lists.isEmpty(list)}">
+    <td colspan="4">
+      등록된 고객 정보가 없습니다.
+    </td>
+  </tr>
+
+  <tr th:each="customer : ${list}">
+    <td align="center" th:text="${list.indexOf(customer)+1}">${list.indexOf(customer)+1}</td>
+    <td align="center"><a href="read.html"
+                               th:href="@{|read?customerId=${customer.customerId}|}"
+                               th:text="${customer.name}">${customer.name}</a></td>
+    <td align="center" th:text="${customer.birth}">${customer.birth}</td>
+    <td align="center" th:text="${customer.email}">${customer.email}</td>
+  </tr>
+</table>
+</body>
+</html>
+
