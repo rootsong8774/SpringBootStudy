@@ -48,7 +48,7 @@
 			</tr>
 			<tr>
 				<td>생년월일</td>
-				<td><input type="text" name="birth" th:field="*{birth}" readonly="readonly"/></td>
+				<td><input type="date" name="birth" th:field="*{birth}" readonly="readonly"/></td>
 				<td><font color="red"><span th:if="${#fields.hasErrors('birth')}" th:errors="*{birth}">error message for birth</span></font></td>
 			</tr>
 			<tr>
