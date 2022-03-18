@@ -26,7 +26,7 @@ public class BoardController {
     }
 
     @PostMapping("/register")
-    public String register(Board board, Model model) {
+    public String register(Board board, Model model) throws Exception {
         boardService.register(board);
         model.addAttribute("msg", "등록이 완료되었습니다.");
         return "board/success";
@@ -55,7 +55,7 @@ public class BoardController {
     }
 
     @PostMapping("/modify")
-    public String modify(Board board, Model model) {
+    public String modify(Board board, Model model) throws Exception {
         boardService.modify(board);
         model.addAttribute("msg", "수정이 완료되었습니다.");
 

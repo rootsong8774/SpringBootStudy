@@ -22,7 +22,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     @Transactional
-    public void register(Board board) {
+    public void register(Board board) throws Exception {
         this.boardRepository.save(board);
     }
 
@@ -34,7 +34,7 @@ public class BoardServiceImpl implements BoardService{
 
     @Override
     @Transactional
-    public void modify(Board board) {
+    public void modify(Board board) throws Exception {
         Board boardEntity = this.boardRepository.getById(board.getBoardNo());
         boardEntity.setTitle(board.getTitle());
         boardEntity.setContent(board.getContent());
