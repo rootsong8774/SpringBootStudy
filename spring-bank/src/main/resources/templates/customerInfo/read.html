@@ -16,6 +16,7 @@
 		$("#btnModify").on("click", function() {
 			let id = $("#customerId");
 			let idVal = id.val();
+			console.log(id);
 			console.log(idVal);
 			self.location = "/customerInfo/modify?customerId=" + idVal;
 		});
