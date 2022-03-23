@@ -1,5 +1,7 @@
 package com.textbook.guestbook.dto;
 
+import com.textbook.guestbook.service.GuestbookService;
+import com.textbook.guestbook.service.GuestbookServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,6 +16,8 @@ public class PageRequestDTO {
 
     private int page;
     private int size;
+    private String type;
+    private String keyword;
 
     public PageRequestDTO() {
         this.page = 1;
