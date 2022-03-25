@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.example.board.entity.Board;
 import com.example.board.entity.Reply;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.IntStream;
 import org.junit.jupiter.api.Test;
@@ -47,4 +48,16 @@ class ReplyRepositoryTests {
         System.out.println("reply = " + reply);
         System.out.println("reply.getBoard() = " + reply.getBoard());
     }
+
+    @Test
+    public void testListByBoard() throws Exception {
+      //given
+        List<Reply> replyList = repository.getRepliesByBoardOrderByRno(
+            Board.builder().bno(97L).build());
+        //when
+        replyList.forEach(System.out::println);
+
+    }
+
+
 }
