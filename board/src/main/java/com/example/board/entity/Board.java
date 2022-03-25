@@ -1,7 +1,9 @@
 package com.example.board.entity;
 
+import static javax.persistence.CascadeType.ALL;
 import static javax.persistence.FetchType.LAZY;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +21,7 @@ import lombok.experimental.SuperBuilder;
 
 @Entity
 @Getter
-@Builder
+@SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @SequenceGenerator(name="board_seq_gen", sequenceName = "board_seq", initialValue = 1, allocationSize = 1)
@@ -34,13 +36,18 @@ public class Board extends BaseEntity{
 
     private String content;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY, cascade = ALL)
     @JoinColumn(name= "email")
     @Exclude
     private Member writer;
 
-    public void changeWriter(Member writer) {
-        this.writer = writer;
+    public void changeTitle(String title) {
+        this.title = title;
     }
+
+    public void changeContent(String content) {
+        this.content = content;
+    }
+
 
 }

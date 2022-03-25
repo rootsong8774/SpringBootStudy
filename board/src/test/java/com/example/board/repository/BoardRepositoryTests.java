@@ -93,5 +93,18 @@ class BoardRepositoryTests {
         //then
     }
 
+    @Test
+    public void testSearch1() throws Exception {
+        boardRepository.search1();
+    }
+
+    @Test
+    public void testSearchPage() throws Exception {
+        Pageable pageable = PageRequest.of(0, 10, Sort.by("title").ascending());
+
+        Page<Object[]> result = boardRepository.searchPage("t", "1", pageable);
+
+    }
+
 
 }
