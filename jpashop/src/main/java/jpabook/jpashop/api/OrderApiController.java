@@ -86,6 +86,7 @@ public class OrderApiController {
     @GetMapping("/api/v6/orders")
     public List<OrderFlatDTO> ordersV6() {
         List<OrderFlatDTO> flats = orderQueryRepository.findAllByDTO_flat();
+        return flats;
     }
 
     @Getter
