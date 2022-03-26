@@ -35,7 +35,7 @@ public class OrderRepository {
         boolean isFirstCondition = true;
 
         //주문 상태 검색색
-       if (orderSearch.getOrderStatus() != null){
+        if (orderSearch.getOrderStatus() != null) {
             if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
@@ -45,7 +45,7 @@ public class OrderRepository {
             jpql += " o.status = :status";
         }
 
-       //회원 이름 검색
+        //회원 이름 검색
         if (StringUtils.hasText(orderSearch.getMemberName())) {
             if (isFirstCondition) {
                 jpql += " where";
@@ -89,7 +89,8 @@ public class OrderRepository {
 
         //회원 이름 검색
         if (StringUtils.hasText(orderSearch.getMemberName())) {
-            Predicate name = cb.like(m.<String>get("name"), "%"+ orderSearch.getMemberName() +"%");
+            Predicate name = cb.like(m.<String>get("name"),
+                "%" + orderSearch.getMemberName() + "%");
             criteria.add(name);
         }
 
@@ -97,5 +98,36 @@ public class OrderRepository {
         TypedQuery<Order> query = entityManager.createQuery(cq).setMaxResults(1000); //최대 1000건
         return query.getResultList();
 
+    }
+
+    public List<Order> findAllWithMemberDelivery() {
+
+        return entityManager.createQuery(
+                "select o from Order o "
+                    + " join fetch o.member m "
+                    + " join fetch o.delivery d", Order.class)
+            .getResultList();
+    }
+
+
+    public List<Order> findAllWithItem() {
+        return entityManager.createQuery(
+            "select distinct o from Order o "
+                + " join fetch o.member m"
+                + " join fetch o.delivery d"
+                + " join fetch o.orderItems oi"
+                + " join fetch oi.item i", Order.class)
+            .getResultList();
+
+    }
+
+    public List<Order> findAllWithMemberDelivery(int offset, int limit) {
+        return entityManager.createQuery(
+                "select o from Order o "
+                    + " join fetch o.member m "
+                    + " join fetch o.delivery d", Order.class)
+            .setFirstResult(offset)
+            .setMaxResults(limit)
+            .getResultList();
     }
 }
