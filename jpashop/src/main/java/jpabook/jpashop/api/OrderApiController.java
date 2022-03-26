@@ -26,6 +26,9 @@ public class OrderApiController {
     private final OrderQueryRepository orderQueryRepository;
 
 
+    /**
+     * forced initialization
+     */
     @GetMapping("/api/v1/orders")
     public List<Order> ordersV1() {
         List<Order> all = orderRepository.findAllByString(new OrderSearch());
@@ -33,7 +36,7 @@ public class OrderApiController {
             order.getMember().getName();
             order.getDelivery().getAddress();
             List<OrderItem> orderItems = order.getOrderItems();
-            orderItems.stream().forEach(orderItem -> orderItem.getItem().getName());
+            orderItems.forEach(orderItem -> orderItem.getItem().getName());
         }
 
         return all;
@@ -43,21 +46,19 @@ public class OrderApiController {
     @GetMapping("/api/v2/orders")
     public List<OrderDto> ordersV2() {
         List<Order> orders = orderRepository.findAllByString(new OrderSearch());
-        List<OrderDto> collect = orders.stream()
-            .map(o -> new OrderDto(o))
-            .collect(Collectors.toList());
 
-        return collect;
+        return orders.stream()
+            .map(OrderDto::new)
+            .collect(Collectors.toList());
     }
 
     @GetMapping("/api/v3/orders")
     public List<OrderDto> ordersV3() {
         List<Order> orders = orderRepository.findAllWithItem();
-        List<OrderDto> collect = orders.stream()
-            .map(o -> new OrderDto(o))
-            .collect(Collectors.toList());
 
-        return collect;
+        return orders.stream()
+            .map(OrderDto::new)
+            .collect(Collectors.toList());
     }
 
     @GetMapping("/api/v3.1/orders")
@@ -66,11 +67,10 @@ public class OrderApiController {
         @RequestParam(value = "limit", defaultValue = "100") int limit) {
 
         List<Order> orders = orderRepository.findAllWithMemberDelivery(offset, limit);
-        List<OrderDto> collect = orders.stream()
-            .map(o -> new OrderDto(o))
-            .collect(Collectors.toList());
 
-        return collect;
+        return orders.stream()
+            .map(OrderDto::new)
+            .collect(Collectors.toList());
     }
 
     @GetMapping("/api/v4/orders")
@@ -91,12 +91,12 @@ public class OrderApiController {
     @Getter
     static class OrderDto {
 
-        private Long orderId;
-        private String name;
-        private LocalDateTime orderDate;
-        private OrderStatus orderStatus;
-        private Address address;
-        private List<OrderItemDTO> orderItems;
+        private final Long orderId;
+        private final String name;
+        private final LocalDateTime orderDate;
+        private final OrderStatus orderStatus;
+        private final Address address;
+        private final List<OrderItemDTO> orderItems;
 
         public OrderDto(Order order) {
             orderId = order.getId();
@@ -107,7 +107,7 @@ public class OrderApiController {
 //            order.getOrderItems().stream().forEach(o -> o.getItem().getName()); // DTO 안에 entity가 존재해서는 안되므로 좋은 코드가 아님
 //            orderItems = order.getOrderItems();
             orderItems = order.getOrderItems().stream()
-                .map(orderItem -> new OrderItemDTO(orderItem))
+                .map(OrderItemDTO::new)
                 .collect(Collectors.toList());
         }
     }
@@ -115,9 +115,9 @@ public class OrderApiController {
     @Getter
     static class OrderItemDTO {
 
-        private String itemName;
-        private int orderPrice;
-        private int count;
+        private final String itemName;
+        private final int orderPrice;
+        private final int count;
 
         public OrderItemDTO(OrderItem orderItem) {
 
