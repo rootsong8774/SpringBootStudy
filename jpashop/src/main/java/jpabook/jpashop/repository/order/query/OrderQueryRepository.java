@@ -65,7 +65,7 @@ public class OrderQueryRepository {
             .getResultList();
 
         return orderItems.stream()
-            .collect(Collectors.groupingBy(orderItemQueryDTO -> orderItemQueryDTO.getOrderId()));
+            .collect(Collectors.groupingBy(OrderItemQueryDTO::getOrderId));
     }
 
     private List<Long> toOrderIds(List<OrderQueryDTO> result) {
