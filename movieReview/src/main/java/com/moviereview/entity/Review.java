@@ -42,7 +42,7 @@ public class Review {
 
     private int grade;
 
-    private String next;
+    private String text;
 
     public void setMember(Member member) {
         this.member = member;
