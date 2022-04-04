@@ -31,7 +31,7 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long memberId;
 
-    private String memberName;
+    private String name;
 
     @Column(unique = true)
     private String email;
@@ -47,7 +47,7 @@ public class Member {
         PasswordEncoder passwordEncoder) {
         String password = passwordEncoder.encode(memberFormDTO.getPassword());
         return Member.builder()
-            .memberName(memberFormDTO.getName())
+            .name(memberFormDTO.getName())
             .email(memberFormDTO.getEmail())
             .address(memberFormDTO.getAddress())
             .password(password)
