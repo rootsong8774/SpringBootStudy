@@ -20,7 +20,7 @@ import lombok.ToString.Exclude;
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString
-public class Team {
+public class Team  extends BaseEntity{
 
     @Id
     @GeneratedValue
